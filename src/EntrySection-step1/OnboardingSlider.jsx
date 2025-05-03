@@ -136,7 +136,7 @@ export default function OnboardingSlider() {
           onClick={handleNext}
         >
           Next
-          <ChevronRight className=" h-5 w-5 inline" />
+          {/* <ChevronRight className=" h-5 w-5 inline" /> */}
         </Button>
       </div>
     </div>
