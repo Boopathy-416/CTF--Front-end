@@ -72,7 +72,7 @@ export default function OnboardingSlider() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-white">
+    <div className="flex flex-col h-screen ">
       <div className="flex-1 relative overflow-hidden">
         {slides.map((slide, index) => (
           <div
@@ -99,11 +99,19 @@ export default function OnboardingSlider() {
               />
             </div>
 
-            <h1 className="text-2xl font-bold text-center mb-3">
+            <h1 className="text-2xl font-bold text-center mb-3"
+            style={{
+              fontFamily:"Dosis ",
+              // fontWeight:"600",
+            }}>
               {slide.title}
             </h1>
 
-            <p className="text-sm text-center text-gray-600 mb-6 max-w-[300px]">
+            <p className="text-sm  text-center text-gray-600 mb-6 max-w-[300px]"
+            style={{
+               fontWeight:"600",
+               fontFamily:"Radley"
+            }}>
               {slide.description}
             </p>
 
@@ -112,7 +120,7 @@ export default function OnboardingSlider() {
                 <div
                   key={i}
                   className={`h-1 rounded-full transition-all duration-300 ${
-                    i === currentSlide ? "w-8 bg-blue-500" : "w-2 bg-gray-300"
+                    i === currentSlide ? "w-8 bg-[#E66579]" : "w-2 bg-gray-300"
                   }`}
                 />
               ))}

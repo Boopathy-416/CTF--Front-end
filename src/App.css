@@ -1,4 +1,8 @@
-/* App.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Radley:ital@0;1&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
 @media (min-width: 1024px) {
     #mobile-app {
       display: none;
@@ -12,7 +16,7 @@
   @media (max-width: 1023px) {
     #mobile-app {
       display: block;
-      padding: 2px;
+      background-color: #eeede7;
     }
   
     #desktop-blocker {
@@ -26,6 +30,6 @@
     align-items: center;
     text-align: center;
     padding: 2rem;
-    background-color: #f9fafb; /* Tailwind's gray-50 */
+    background-color: #eeede7; /* Tailwind's gray-50 */
   }
   
