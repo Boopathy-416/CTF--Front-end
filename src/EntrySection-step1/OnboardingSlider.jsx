@@ -11,19 +11,19 @@ export default function OnboardingSlider() {
 
   const slides = [
     {
-      image: "src/assets/fin1 (1).png",
+      image: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1746289278/fin1_1_gdjz9w.png",
       title: "Streamlined Collection Process",
       description:
         "Easily manage daily, weekly, or monthly collections without paperwork. Employees can record payments instantly on the go.",
     },
     {
-      image: "src/assets/fin1 (2).png",
+      image: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1746289278/fin1_2_auvdls.png",
       title: "Real-time Analytics Dashboard",
       description:
         "Track your business performance with powerful analytics. Get insights on collections, payments, and customer behavior.",
     },
     {
-      image: "src/assets/fin1 (3).png",
+      image: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1746289278/fin1_3_febk7z.png",
       title: "Secure Payment Processing",
       description:
         "Process payments securely with end-to-end encryption. Support for multiple payment methods and instant reconciliation.",
