@@ -16,6 +16,7 @@
   @media (max-width: 1023px) {
     #mobile-app {
       display: block;
+      height: 100dvh;
       background-color: #eeede7;
     }
   
@@ -30,6 +31,6 @@
     align-items: center;
     text-align: center;
     padding: 2rem;
-    background-color: #eeede7; /* Tailwind's gray-50 */
+    background-color: #F8F7F5; 
   }
   
