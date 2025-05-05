@@ -71,9 +71,13 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="relative w-full h-[100svh] bg-amber-100 mb-6">
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+    <div className="relative w-screen overflow-hidden h-[200svh]   py-10 mb-6"
+    style={{
+      background: "linear-gradient(135deg, #e0f2ff 0%, #90cdf4 50%, #3182ce 100%)",
+      clipPath: "ellipse(150% 100% at 100%)", // gives an oval, cursive-like shape from left-bottom
+    }}>
+      <div className="relative px-2">
+        <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
         <input
           ref={inputRef}
           type="text"
@@ -82,14 +86,14 @@ export default function SearchBar() {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          className="pl-10 pr-4 h-12 rounded-full border w-full"
+          className="pl-15 pr-4 h-12 rounded-full border w-full "
         />
       </div>
 
       {showSuggestions && filteredSuggestions.length > 0 && (
         <div
           ref={suggestionsRef}
-          className="absolute z-10 w-full mt-1 bg-white border rounded-lg shadow-lg max-h-60 overflow-auto"
+          className="absolute left-7 z-1 center  w-80 mt-1 bg-white border rounded-lg shadow-lg max-h-60 overflow-auto"
         >
           {filteredSuggestions.map((suggestion, index) => (
             <div

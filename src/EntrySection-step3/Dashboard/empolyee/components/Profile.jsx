@@ -3,7 +3,11 @@ import React from "react";
 
 function Profile() {
   return (
-    <div className="page-content p-4">
+    <div className="page-content w-auto min-h-screen p-4" 
+    style={{
+      background: "linear-gradient(135deg, #e0f2ff 0%, #90cdf4 50%, #3182ce 100%)",
+      clipPath: "ellipse(150% 100% at 100%)", // gives an oval, cursive-like shape from left-bottom
+    }}>
       <h1 className="text-2xl font-bold mb-4">Profile</h1>
       <p>This is the profile page content.</p>
 

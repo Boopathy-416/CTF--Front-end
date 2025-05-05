@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom"; // ✅ Import useNavigate
 import BottomNavbar from "./BottomNavbar.jsx";
 import { gsap } from "gsap";
-import { LocationEditIcon, LogOut, MoveRight } from "lucide-react";
+import {  LucideMoveRight, MenuIcon, } from "lucide-react";
 
 const thoughts = [
   "Stay focused and never give up.",
@@ -71,7 +71,7 @@ function EmployeeHome() {
         repeat: -1,
         yoyo: true,
         duration: 1,
-        boxShadow: "0 0 25px rgba(0, 123, 255, 0.6)",
+        boxShadow: "0 10 50px rgba(0, 123, 255, 0.9)",
         scale: 1.05,
         ease: "power1.inOut",
       });
@@ -87,62 +87,68 @@ function EmployeeHome() {
   };
 
   return (
-    <div className="min-h-screen bg-[#92bbf8] relative">
+    <div className="min-h-screen bg-[#ffffff]  relative">
       <div className="page-content ">
         <Outlet />
       </div>
-      <div className=" bg-[#92bbf8]  overflow-hidden p-4 h-full flex flex-col">
+      <div className="  overflow-hidden p-4 h-full flex flex-col">
         <div className="flex justify-between  items-center p-2">
-          <h1 className="text-3xl  font-extralight  p-2 ">
-            {getGreeting()}👋
-          </h1>
-          
+<MenuIcon  className=" text-gray-800 " />
+
+          <h1 className="text-shadow-xs  font-bold  p-2 ">CONNECTOFIN </h1>
+
           <button
             // onClick={() => navigate("/")}
-            className=" text-red-800 p-2"
+            className=" text-white border-2 rounded-full font-black bg-black  p-1"
           >
-         <LocationEditIcon />  <span className="text-xs -mx-4 font-semibold text-green-900 underline underline-offset-2 tracking-loose  shadow-black " >Mumbai</span>
+            <LucideMoveRight />
+  
           </button>
         </div>
 
-        <div className="flex  justify-center pb-4">
+        {/* <div className="flex  justify-center ">
           <img
-            src="https://res.cloudinary.com/dpm3bum4n/image/upload/v1746456317/empolyeehome_wclcuz.png"
+            src="https://media.giphy.com/media/LqUx9iazNy50fjlMpR/giphy.gif?cid=ecf05e474quojiztyyptt1d49zfsefsp486rba8w9pnxg1av&ep=v1_gifs_search&rid=giphy.gif&ct=g"
             alt="Employee working"
             width={260}
             height={220}
           />
+        </div> */}
+        <div className="flex  justify-center py-4">
+          <button
+            className="start-button bg-[#345de9] border-4 border-[#4a4a4a80] shadow-blue-700 shadow-2xl 
+           text-white text-md font-bold w-40 h-40 uppercase rounded-full flex items-center text-center justify-center transition-all mb-8"
+            onClick={handleStartWork}
+            disabled={isWorking}
+            style={{
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            start to work
+          </button>
         </div>
 
-        <button
-          className="start-button bg-[#b57474] text-white text-xl py-6 px-12 rounded-2xl mb-8 transition-all"
-          onClick={handleStartWork}
-          disabled={isWorking}
-          style={{
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          ⚡ Start Work
-        </button>
-
-        <div className="bg-[#7aabf9] rounded-xl shadow-xl p-4 mb-8">
-          <p className="text-gray-100 mb-1">Live Time Recorder</p>
+        <div className="bg-[#c5d3e8a4] text-center rounded-xl shadow-xl p-4 mb-8">
+          <p className="text-gray-800 font-semibold mb-1">
+            Live work Time Recorder
+          </p>
           <p className="text-5xl font-bold">{formatTime(elapsedTime)}</p>
         </div>
 
-        <div className="mt-auto rounded-xl shadow-xl p-4 bg-[#fbf9f5]  ">
-          <h2 className="text-2xl font-bold mb-2">Moral of the day 📆</h2>
-          <p className="text-xl italic">"{dailyThought}"</p>
+        <div className="mt-auto text-center   p-4 bg-[#fbf9f5]  ">
+          <h2 className="text-sm font-bold mb-2">Moral of the day 📆</h2>
+          <p className="text-xs italic">"{dailyThought}"</p>
         </div>
       </div>
       <div className="flex justify-center p-4">
-        <button
-          onClick={() => navigate("/")}
-          className="bg-black text-white px-6 py-2 rounded hover:bg-green-600"
-        >
-          Logout 
-        </button>
+        <img
+                  src="/PNG Logo.png"
+          // src="https://media.giphy.com/media/LqUx9iazNy50fjlMpR/giphy.gif?cid=ecf05e474quojiztyyptt1d49zfsefsp486rba8w9pnxg1av&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+          alt="Employee working"
+          width={120}
+          height={120}
+        />
       </div>
 
       <BottomNavbar />
