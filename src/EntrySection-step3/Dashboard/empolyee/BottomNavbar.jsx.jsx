@@ -1,24 +1,24 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, Search, Bell, User, ScanBarcode } from "lucide-react";
+import { Home, Search, User, ScanBarcode, LogOut } from "lucide-react";
 import { gsap } from "gsap";
 
 const navItems = [
-  { icon: Home, label: "Home", path: "/dashboard/employee/home" },
+  { icon: Home, label: "Home", path: "/dashboard/employee/" },
   { icon: Search, label: "Search", path: "/dashboard/employee/search" },
   { icon: ScanBarcode, label: "Scan", path: "/dashboard/employee/scan" },
-  { icon: Bell, label: "Notifications", path: "/dashboard/employee/notifications" },
+  { icon: LogOut, label: "Logout", path: "/" },
   { icon: User, label: "Profile", path: "/dashboard/employee/profile" },
 ];
 
 <div className="flex justify-center p-4">
-<button
-  onClick={() => navigate("/")}
-  className="bg-black text-white px-6 py-2 rounded hover:bg-green-600"
->
-  Logout
-</button>
-</div>
+  <button
+    onClick={() => navigate("/")}
+    className="bg-black text-white px-6 py-2 rounded hover:bg-green-600"
+  >
+    Logout
+  </button>
+</div>;
 
 export default function BottomNavbar() {
   const navigate = useNavigate();

@@ -5,7 +5,6 @@ import AdminHome from "../EntrySection-step3/Dashboard/admin/Home";
 import EmployeeHome from "../EntrySection-step3/Dashboard/empolyee/EmployeeHome";
 import Dashboard from "../pages/Dashboard";
 import SearchBar from "../EntrySection-step3/Dashboard/empolyee/components/SearchBox";
-import Home from "../EntrySection-step3/Dashboard/empolyee/components/Home";
 import { Scan } from "lucide-react";
 import Notification from "../EntrySection-step3/Dashboard/empolyee/components/Notification";
 import Profile from "../EntrySection-step3/Dashboard/empolyee/components/Profile";
@@ -32,7 +31,7 @@ function MobileApp() {
 
         {/* Nested routing under employee layout */}
         <Route path="/dashboard/employee" element={<EmployeeHome />}>
-          <Route path="home" element={<Home />} />
+
           <Route path="Search" element={<SearchBar />} />
           <Route path="Scan" element={<Scan />} />
           <Route path="Notifications" element={<Notification />} />
