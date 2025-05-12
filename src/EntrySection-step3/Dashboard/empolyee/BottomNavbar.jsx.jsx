@@ -70,8 +70,8 @@ export default function BottomNavbar() {
   return (
     <div
       ref={navRef}
-      className="fixed bottom-0 left-0 right-0 max-w-md mx-auto h-18 rounded-t-full   shadow-xl  bg-blue-800 border-t border-gray-700 flex items-center justify-around px-2 z-50"
-    >
+      className="fixed bottom-0 left-0 right-0 max-w-md mx-auto h-18 rounded-t-full   shadow-xl  bg-blue-800 border-1 border-black flex items-center justify-around px-2 z-50"
+      style={{ boxShadow: '0 0 0 10px rgba(0, 0, 0, 0.2)' }}>
       {navItems.map((item) => {
         const Icon = item.icon;
         const isActive = location.pathname === item.path;
