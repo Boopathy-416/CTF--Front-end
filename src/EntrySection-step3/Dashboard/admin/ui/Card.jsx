@@ -6,7 +6,7 @@ export function Card({ children, className = "" }) {
 }
 
 export function CardHeader({ children }) {
-  return <div className="border-b px-4 py-3">{children}</div>;
+  return <div className=" bg-green-200 px-4 py-3">{children}</div>;
 }
 
 export function CardTitle({ children }) {
@@ -22,5 +22,5 @@ export function CardContent({ children, className = "" }) {
 }
 
 export function CardFooter({ children }) {
-  return <div className="border-t px-4 py-3">{children}</div>;
+  return <div className=" px-4 py-3">{children}</div>;
 }

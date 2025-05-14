@@ -1,62 +1,161 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
 
-// Mock data - replace with your API data later
-const customers = [
-  { id: 1, name: "John Doe", email: "john@example.com", status: "Active" },
-  { id: 2, name: "Jane Smith", email: "jane@example.com", status: "Active" },
-  { id: 3, name: "Robert Johnson", email: "robert@example.com", status: "Inactive" },
-  { id: 4, name: "Emily Davis", email: "emily@example.com", status: "Active" },
-];
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+// import gsap from 'gsap';
+// import CustomerCard from '../ui/CustomerCard';
+// import CustomerModal from '../ui/CustomerModal';
+
+
+// export default function CustomerGallery() {
+//   const [customers, setCustomers] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [selectedImage, setSelectedImage] = useState('');
+
+
+//   const fetchCustomers = async () => {
+//     try {
+//       const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/customers`);
+//       setCustomers(res.data);
+//     } catch (err) {
+//       console.error("Failed to fetch customers:", err.message);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const handleImageClick = (image) => {
+//     setSelectedImage(image);
+//     setIsModalOpen(true);
+//   };
+
+//   const handleCloseModal = () => {
+//     setIsModalOpen(false);
+//   };
+
+//   const handleDeleteClick = async (customerId) => {
+//     if (window.confirm("Are you sure you want to delete this customer?")) {
+//       try {
+//         const res = await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/customers/${customerId}`);
+//         if (res.status === 200) {
+//           setCustomers(customers.filter((customer) => customer._id !== customerId));
+//           alert("Customer deleted successfully!");
+//         }
+//       } catch (err) {
+//         console.error("Failed to delete customer:", err.message);
+//         alert("Error deleting customer.");
+//       }
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchCustomers();
+//   }, []);
+
+//   useEffect(() => {
+//     if (!loading) {
+//       gsap.from(".customer-card", {
+//         y: 30,
+//         opacity: 0,
+//         duration: 0.6,
+//         stagger: 0.1,
+//         ease: "power3.out",
+//       });
+//     }
+//   }, [loading]);
+
+//   if (loading) return <p className="text-center mt-4">Loading customers...</p>;
+
+//   return (
+//     <div className="p-4">
+//       <h2 className="text-xl font-bold mb-4">All Customers</h2>
+//       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+//         {customers.map((customer) => (
+//           <CustomerCard
+//             key={customer._id}
+//             customer={customer}
+//             onImageClick={handleImageClick}
+//             onDeleteClick={handleDeleteClick}
+//           />
+//         ))}
+//       </div>
+
+//       {/* Modal for full-size image */}
+//       {isModalOpen && <CustomerModal image={selectedImage} onClose={handleCloseModal} />}
+//     </div>
+//   );
+// }
+
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import gsap from 'gsap';
+import CustomerCard from '../ui/CustomerCard';
+import CustomerModal from '../ui/CustomerModal';
 
 export default function CustomerGallery() {
-  const galleryRef = useRef(null);
+  const [customers, setCustomers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState('');
+
+  const fetchCustomers = async () => {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/customers`);
+      setCustomers(res.data);
+    } catch (err) {
+      console.error('Failed to fetch customers:', err?.response?.data || err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+
 
   useEffect(() => {
-    if (galleryRef.current) {
-      const cards = galleryRef.current.querySelectorAll(".customer-card");
-
-      gsap.from(cards, {
-        y: 30,
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power3.out",
-      });
-    }
+    fetchCustomers();
   }, []);
 
+  useEffect(() => {
+    if (!loading) {
+      gsap.from('.customer-card', {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power3.out',
+      });
+    }
+  }, [loading]);
+
+  if (loading) return <p className="text-center mt-4">Loading customers...</p>;
+
   return (
-    <div ref={galleryRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {customers.map((customer) => (
-        <div
-          key={customer.id}
-          className="customer-card bg-transparent p-4 rounded-lg shadow-sm flex items-center gap-4"
-        >
-          <div className="relative w-12 h-12 rounded-full overflow-hidden">
-            <img
-              src="/placeholder.svg"
-              alt={customer.name}
-              width={48}
-              height={48}
-              className="object-cover w-full h-full"
-            />
-          </div>
-          <div>
-            <h3 className="font-semibold">{customer.name}</h3>
-            <p className="text-sm text-gray-600">{customer.email}</p>
-            <span
-              className={`text-xs px-2 py-1 rounded-full ${
-                customer.status === "Active"
-                  ? "bg-green-100 text-green-800"
-                  : "bg-red-100 text-red-800"
-              }`}
-            >
-              {customer.status}
-            </span>
-          </div>
-        </div>
-      ))}
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">All Customers</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {customers.map((customer) => (
+          <CustomerCard
+            key={customer._id}
+            customer={customer}
+             daysCount={customer.daysCount}
+            onImageClick={handleImageClick}
+
+          />
+        ))}
+      </div>
+
+      {/* Modal for full-size image */}
+      {isModalOpen && <CustomerModal image={selectedImage} onClose={handleCloseModal} />}
     </div>
   );
 }

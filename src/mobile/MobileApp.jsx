@@ -28,6 +28,7 @@ function MobileApp() {
           <Route path="AdminNavbar/analytics" element={<DailyAnalytic />} />
           <Route path="AdminNavbar/add-customer" element={<AddCustomer />} />
           <Route path="AdminNavbar/add-employee" element={<AddEmployee />} />
+          
         </Route>
         {/* Nested routing under employee layout */}
         <Route path="/dashboard/employee" element={<EmployeeHome />}>
